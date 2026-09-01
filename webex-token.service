@@ -1,0 +1,21 @@
+[Unit]
+Description=Webex Token Service (OAuth & GraphQL proxy)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data                    # or dedicated user (ex: webex)
+Group=www-data
+WorkingDirectory=/opt/webex-token-service
+ExecStart=/usr/bin/python3 /opt/webex-token-service/token_service.py
+Restart=on-failure               # restart if error
+RestartSec=10
+StandardOutput=append:/var/log/webex-token-service.log
+StandardError=append:/var/log/webex-token-service-error.log
+# For better rotation logs, you could use syslog
+# StandardOutput=syslog
+# StandardError=syslog
+# SyslogIdentifier=webex-token
+
+[Install]
+WantedBy=multi-user.target
