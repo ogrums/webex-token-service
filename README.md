@@ -8,6 +8,9 @@ sudo touch /var/log/webex-token-service.log
 sudo touch /var/log/webex-token-service-error.log
 sudo chown www-data:www-data /var/log/webex-token-service*.log
 
+# Copier le fichiers service
+sudo cp /opt/webex-token-service/webex-token.service /usr/lib/systemd/system/webex-token.service
+
 # Recharger systemd
 sudo systemctl daemon-reload
 

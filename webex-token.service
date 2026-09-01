@@ -4,11 +4,13 @@ After=network.target
 
 [Service]
 Type=simple
-User=www-data                    # or dedicated user (ex: webex)
+# or dedicated user (ex: webex)
+User=www-data
 Group=www-data
 WorkingDirectory=/opt/webex-token-service
 ExecStart=/usr/bin/python3 /opt/webex-token-service/token_service.py
-Restart=on-failure               # restart if error
+# restart if error
+Restart=on-failure
 RestartSec=10
 StandardOutput=append:/var/log/webex-token-service.log
 StandardError=append:/var/log/webex-token-service-error.log
